@@ -1,3 +1,5 @@
+![Fuqaz banner](banner.png)
+
 # Fuqaz
 
 A simple local Discord bot powered by Ollama, with lightweight SQLite chat memory and optional vision support.
