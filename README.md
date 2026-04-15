@@ -63,11 +63,11 @@ Pull a model you want to use, by default the bot is configured for Ministral-3:8
 ollama pull ministral-3:8b
 ```
 
-Then confirm your chosen model name matches what you put in `.env` and towards the top of 'ai.py'
+Then confirm your chosen model name matches what you put in `.env`.
 
 ## Environment variables
 
-Create a `.env` file in the project root.
+Create a `.env` file in the project root. A .env.example file is included.
 
 Example:
 
