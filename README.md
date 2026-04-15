@@ -154,7 +154,7 @@ If everything is set up correctly, the bot should log in and print its connected
 
 ### Getting the bot in your channels
 
-Worth mentioning that if you have any server requirements on new users joining, such as reading and agreeing to rules, you (or a moderator) will need to manually give your bot the roles to get it in channels. Most people will probably create a new role on their server for the bot.  But if you're not seeing it pop up in channels right away after configuring and running, go look for it your welcome channel or whatever and get it situated on its role and server permissions.
+Worth mentioning that if you have any server requirements such as reading and agreeing to rules to gain channel permissions, you (or a moderator) will need to manually give your bot the required roles/permissions it needs to access channels.
 
 ## How it works
 
@@ -166,7 +166,6 @@ Worth mentioning that if you have any server requirements on new users joining, 
 - mention-based replies in servers,
 - short follow-up conversations,
 - slash commands like `/ask` and `/vision`,
-- message splitting for long responses,
 - and collecting images from attachments or replied-to messages.
 
 ### `memory.py`
