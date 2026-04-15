@@ -109,7 +109,7 @@ Keep this token private. Anyone who gets it can control your bot.
 If you are running this bot against your own local Ollama instance, it is strongly recommended to keep the bot private.
 
 In the Developer Portal under **Bot**, leave **Public Bot** unchecked.  
-Discord’s bot authorization flow states that when **Public Bot** is disabled, only the bot owner can add the bot to servers; if it is enabled, anyone with the invite URL can add it to servers where they have permission.
+Discord’s bot authorization flow states that when **Public Bot** is disabled, only the bot owner can add the bot to servers; if it is enabled, your Bot's profile within Discord will have an "Add" button allowing anyone to invite it to their server as well as allowing anyone with the invite link to do the same.
 
 This is the safest default for a self-hosted bot, because it prevents other people from inviting your bot into their own servers and sending traffic to your local LLM.
 
