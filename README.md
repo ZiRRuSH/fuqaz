@@ -219,4 +219,4 @@ A few practical things to know:
 
 ## License
 
-This project is licensed under the MIT License. See the `LICENSE.txt` file for details.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
