@@ -210,7 +210,12 @@ A few practical things to know:
 
 - The memory database is local: `fuqaz_memory.db`.
 - The bot uses a short recent-history window for context rather than stuffing massive chat logs into every prompt.
+- If you experience context rot, try reducing the "limit: int = 10" values in memory.py.
 - The current code is intentionally simple and easy to edit, not a giant framework.
+- It may not play well with every model in Ollama (Its been created and tested around Ministral-3-8B, if using other models you may want/need to adjust the sampling values in ai.py)
+- I encourage experimenting with the prompting in memory.py, this is a good place to try and work out quirks or dial-in specific personas/attitudes with your bot.
+- The code has SOME basic error handling in it, in particular for 503 errors it may encounter. It will end its process after a few failed retries, pairing the bot with NSSM or similar can allow automated recovery if that occurs while you're away.
+- This is a 'for-fun' project I began out of boredum and curiosity, I felt it was useful and simple enough to get setup that others may enjoy it. I will likely make improvements and adjustments over time, but this is not a high priority project.
 
 ## License
 
