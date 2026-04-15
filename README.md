@@ -153,7 +153,11 @@ python bot.py
 ```
 
 If everything is set up correctly, the bot should log in and print its connected username in the console.
+- Users can interact with the bot within Discord by @ tagging it in chat, by DM, or with the slash commands /ask and /vision.
+  - After tagging the bot in a chat channel, it will remain interactive with the user for 300 seconds (5 minutes)
+  - If the user responds with a STOP_WORD it will end the persistent interaction, STOP_WORDS are located near the top of the bot.py file and can be customized.
 
+  
 ### Getting the bot in your channels
 
 Worth mentioning that if you have any server requirements such as reading and agreeing to rules to gain channel permissions, you (or a moderator) will need to manually give your bot the required roles/permissions it needs to access channels.
