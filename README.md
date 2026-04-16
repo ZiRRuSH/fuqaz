@@ -36,7 +36,7 @@ This started as a personal experiment I built out of boredom, but it turned out 
 ## Install
 
 1. Clone the repo.
-2. Enter '\fuqaz' directory.
+2. Enter 'fuqaz' directory.
 3. Create and activate a virtual environment.
 4. Install dependencies.
 
