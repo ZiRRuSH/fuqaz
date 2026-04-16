@@ -6,7 +6,7 @@ A simple local Discord bot powered by Ollama, with lightweight SQLite chat memor
 
 The goal of this bot is to stay fast, practical, and easy to tweak. It runs locally, keeps recent chat context plus a small memory database, and can answer normal text questions or image-based questions depending on the model you use. The current code uses Ollama’s `/api/generate` endpoint for text and vision requests.
 
-This was/is just a personal experimental project I did out of boredum, but found it convenient and simple enough I decided to share it. Two birds with one stone, provides an entertaining Discord bot while also allowing you remote access to local LLM's through discord.
+This started as a personal experiment I built out of boredom, but it turned out useful and simple enough that I decided to share it. Two birds with one stone: an entertaining Discord bot that also gives you remote access to your local LLMs through Discord.
 
 ## Features
 
@@ -68,8 +68,9 @@ pip install -r requirements.txt
 
 Make sure [Ollama](https://ollama.com/download) is installed and running locally. The current bot expects Ollama to be available at `http://localhost:11434/api/generate`, which is the normal/default endpoint.
 
-Pull a model you want to use, by default the bot is configured for Ministral-3:8b:
-
+Pull a model you want to use, by default the bot is configured for Ministral-3 8B:
+  - NOTE: If using a model outside of the Ministral-3 family, consider adjusting the sampling values located near the beginning of the ai.py code if it acts strange (quick net search should land you recommended values for whichever model you prefer to use.)
+    
 ```bash
 ollama pull ministral-3:8b
 ```
@@ -98,7 +99,7 @@ LOCAL_TIMEZONE=America/New_York
 - `GUILD_ID` is your server's ID, you can see this by enabling developer mode in discord's settings then right clicking on your server icon in Discord and 'Copy Server Info > Copy Server ID'.
 - `OLLAMA_URL` defaults to `http://localhost:11434/api/generate` in the current code.
 - `OLLAMA_MODEL` is the model the bot will run and should match a model you already have pulled in Ollama. 'ollama list' lists pulled models and names you currently have available.
-- `SEARXNG_URL` can stay in the file even if you are not using search yet. It does not hurt anything by being present but provides a search tool to the bot if you decide to install SearXNG.
+- `SEARXNG_URL` can stay in the file even if you are not using search yet. It does not hurt anything by being present, but provides a search tool to the bot if you decide to install SearXNG.
 - `LOCAL_TIMEZONE` IANA timezone name used for date/time grounding in prompts, for example `America/New_York`.
 
 ## Discord bot setup
@@ -202,7 +203,7 @@ It also builds the full prompts used for text and vision replies by combining:
 
 `ai.py` sends prompts to Ollama using the local HTTP API. The current version uses:
 - text generation through `/api/generate`,
-- image generation requests through the same endpoint with base64-encoded images for multimodal models.
+- image analysis requests through the same endpoint with base64-encoded images for multimodal models.
 
 ## Vision support
 
@@ -224,7 +225,7 @@ A few practical things to know:
 - It may not play well with every model in Ollama (Its been created and tested around Ministral-3-8B, if using other models you may want/need to adjust the sampling values in ai.py)
 - I encourage experimenting with the prompting in memory.py, this is a good place to try and work out quirks or dial-in specific personas/attitudes with your bot.
 - The code has SOME basic error handling in it, in particular for 503 errors it may encounter. It will end its process after a few failed retries, pairing the bot with NSSM or similar can allow automated recovery if that occurs while you're away.
-- This is a 'for-fun' project I began out of boredum and curiosity, I felt it was useful and simple enough to get setup that others may enjoy it. I will likely make improvements and adjustments over time, but this is not a high priority project.
+- This is a 'for-fun' project I began out of boredom and curiosity, I felt it was useful and simple enough to get setup that others may enjoy it too. I will likely make improvements and adjustments over time, but this is not a high priority project.
 
 ## License
 
