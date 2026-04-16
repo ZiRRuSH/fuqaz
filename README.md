@@ -240,11 +240,11 @@ A few practical things to know:
 
 - The memory database is local: `fuqaz_memory.db`.
 - The bot uses a short recent-history window for context rather than stuffing massive chat logs into every prompt.
-- If you experience [context rot](https://grokipedia.com/page/Context_Rot), try reducing the "limit: int = 10" values in memory.py.
-- I personally use Ministral-3 and like it for "bullshitting with an AI" use cases I see ideal for a chatbot, if the 8B model is a bit heavy on your hardware you can use the `ministral-3:3b`.  Don't have to use ministral, but it is a model I personally enjoy (not affiliated with MistralAI at all, lol... use whatever models you want.)
+- If you experience [context rot](https://grokipedia.com/page/Context_Rot), try reducing the `limit: int = 10` values in `memory.py`.
+- I personally use Ministral-3 and like it for "bullshitting with an AI" use cases that I see ideal for a chatbot. If the 8B model is a bit heavy on your hardware you can use `ministral-3:3b`.  Don't have to use ministral, but it is a model I personally enjoy (not affiliated with MistralAI at all, lol... use whatever models you want.)
 - The current code is intentionally simple and easy to edit, not a giant framework.
 - It does not play well with every model in Ollama (It doesn't like thinking models like qwen 3.5, I intend to iron those wrinkles out in time. Gemma4 works but is quirky as well, but I think that may be on the Ollama side right now 🤷‍♂️ ).  If you encounter problems, feel free to post an issue and ensure you include the model used. No promises, but when I'm bored and tinkering I may look into them.
-- I encourage experimenting with the prompting in memory.py, this is a good place to try and work out quirks or dial-in specific personas/attitudes with your bot.
+- I encourage experimenting with the prompting in `memory.py`, this is a good place to try and work out quirks or dial-in specific personas/attitudes with your bot.
 - The code has SOME basic error handling in it, in particular for 503 errors it may encounter. It will end its process after a few failed retries, pairing the bot with [NSSM](https://nssm.cc/) in Windows or a systemd unit file in Linux can allow automated recovery if that occurs while you're away (Error Handling will get implemented as I encounter errors xD ).
 - This is a 'for-fun' project I began out of boredom and curiosity, I felt it was useful and simple enough to get set up that others may enjoy it too. I will likely make improvements and adjustments over time, but this is not a high priority project.
 
