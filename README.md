@@ -126,15 +126,13 @@ Keep this token private. Anyone who gets it can control your bot.
 If you are running this bot against your own local Ollama instance, it is strongly recommended to keep the bot private.
 
 In the Developer Portal under **Bot**, leave **Public Bot** unchecked.  
-Discord’s bot authorization flow states that when **Public Bot** is disabled, only the bot owner can add the bot to servers; if it is enabled, your Bot's profile within Discord will have an "Add" button allowing anyone to invite it to their server as well as allowing anyone with the invite link to do the same.
+If it is enabled, your Bot's profile within Discord will have an "Add" button allowing anyone to invite it to their server as well as allowing anyone with the invite link to do the same.
 
 This is the safest default for a self-hosted bot, because it prevents other people from inviting your bot into their own servers and sending traffic to your local LLM.
 
 ### 4. Enable Message Content Intent
 
 This project uses `intents.message_content = True`, so you need to enable **Message Content Intent** in the Developer Portal under **Bot** → **Privileged Gateway Intents**.
-
-The `discord.py` intents documentation notes that privileged intents must be enabled in the portal and also enabled in code.
 
 This matters because message content intent is used when a bot needs access to message content, attachments, embeds, components, or similar fields.
 
@@ -145,7 +143,7 @@ In the Developer Portal, go to **OAuth2** → **URL Generator** and select:
 - `bot`
 - `applications.commands`
 
-Discord’s OAuth2 documentation notes that `applications.commands` is included by default with the `bot` scope, but selecting both in the UI is still common and harmless for clarity.
+Discord’s OAuth2 documentation notes that `applications.commands` is included by default with the `bot` scope, but selecting both in the UI is still common and harmless.
 
 For permissions, a practical starting point is:
 
@@ -155,7 +153,7 @@ For permissions, a practical starting point is:
 - Attach Files
 - Use Application Commands
 
-Try to avoid over-permissioning the bot. You do **not** need Administrator for this project. Discord’s OAuth2 bot authorization flow uses the permissions value in the invite link to request only the permissions you choose.
+Try to avoid over-permissioning the bot. You do **not** need Administrator for this project. It is not a Moderator or anything, if you decide to code in features like that you'll need to make sure your bot has the required permissions though.
 
 ### 6. Invite the bot to your server
 
