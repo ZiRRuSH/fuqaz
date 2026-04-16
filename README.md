@@ -230,7 +230,7 @@ A few practical things to know:
 - The current code is intentionally simple and easy to edit, not a giant framework.
 - It may/does not play well with every model in Ollama (It doesn't like thinking models like qwen 3.5, I intend to iron those wrinkles out in time. Gemma4 works but is quirky as well, but I think that may be on the Ollama side right now ¯\_(ツ)_/¯ ).  If you encounter problems, feel free to post an issue and ensure you include the model used. No promises, but when I'm bored and tinkering I may look into them.
 - I encourage experimenting with the prompting in memory.py, this is a good place to try and work out quirks or dial-in specific personas/attitudes with your bot.
-- The code has SOME basic error handling in it, in particular for 503 errors it may encounter. It will end its process after a few failed retries, pairing the bot with [NSSM](https://nssm.cc/) in Windows or a systemd unit file in Linux can allow automated recovery if that occurs while you're away (Error Handling will get implemented as I encounter errors xD ).
+- The code has SOME basic error handling in it, in particular for 503 errors it may encounter. It will end it's process after a few failed retries, pairing the bot with [NSSM](https://nssm.cc/) in Windows or a systemd unit file in Linux can allow automated recovery if that occurs while you're away (Error Handling will get implemented as I encounter errors xD ).
 - This is a 'for-fun' project I began out of boredom and curiosity, I felt it was useful and simple enough to get setup that others may enjoy it too. I will likely make improvements and adjustments over time, but this is not a high priority project.
 
 ## License
