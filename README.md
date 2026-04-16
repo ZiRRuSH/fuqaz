@@ -17,7 +17,8 @@ This started as a personal experiment I built out of boredom, but it turned out 
   - per-channel summaries,
   - per-user facts/preferences.
 - Basic vision flow for image attachments and replied-to images.
-- Simple, hackable code layout with only a few files.
+- Simple, tinker-friendly code layout with only a few files.
+- 100% Python because K.I.S.S.
 
 ## Files
 
