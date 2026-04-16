@@ -11,13 +11,13 @@ This started as a personal experiment I built out of boredom, but it turned out 
 ## Features
 
 - Local Discord bot using `discord.py`
-- Runs off of a local Ollama model.
+- Uses a locally hosted Ollama model.
 - SQLite-based memory for:
   - recent per-channel messages,
   - per-channel summaries,
   - per-user facts/preferences.
 - Basic vision flow for image attachments and replied-to images (if your Ollama model supports vision).
-- Optional web search via a local SearXNG API.
+- Optional web search capability via SearXNG.
 - Simple, tinker-friendly code layout with only a few files.
 
 ## Files
