@@ -68,14 +68,20 @@ pip install -r requirements.txt
 
 Make sure [Ollama](https://ollama.com/download) is installed and running locally. The current bot expects Ollama to be available at `http://localhost:11434/api/generate`, which is the normal/default endpoint.
 
-Pull a model you want to use, by default the bot is configured for Ministral-3 8B:
-  - NOTE: If using a model outside of the Ministral-3 family, consider adjusting the sampling values located near the beginning of the ai.py code if it acts strange (quick net search should land you recommended values for whichever model you prefer to use.)
+Pull a model you want to use. By default, the bot is configured for Ministral-3 8B.
+
+- If you use a model outside the Ministral-3 family, you may need to adjust the sampling values near the top of `ai.py`. (a quick web search of your chosen model's recommended sampling values should land you quick results.)
+- If the chosen model does not support vision, the bot will still work, but image parsing will not.
     
 ```bash
 ollama pull ministral-3:8b
 ```
 
 Then confirm your chosen model name matches what you put in `.env`.
+
+```bash
+ollama list
+```
 
 ## Environment variables
 
@@ -222,9 +228,9 @@ A few practical things to know:
 - The bot uses a short recent-history window for context rather than stuffing massive chat logs into every prompt.
 - If you experience context rot, try reducing the "limit: int = 10" values in memory.py.
 - The current code is intentionally simple and easy to edit, not a giant framework.
-- It may not play well with every model in Ollama (Its been created and tested around Ministral-3-8B, if using other models you may want/need to adjust the sampling values in ai.py)
+- It may/does not play well with every model in Ollama (It doesn't like thinking models like qwen 3.5, I intend to iron those wrinkles out in time. Gemma4 works but is quirky as well, but I think that may be on the Ollama side right now ¯\_(ツ)_/¯ ).  If you encounter problems, feel free to post an issue and ensure you include the model used. No promises, but when I'm bored and tinkering I may look into them.
 - I encourage experimenting with the prompting in memory.py, this is a good place to try and work out quirks or dial-in specific personas/attitudes with your bot.
-- The code has SOME basic error handling in it, in particular for 503 errors it may encounter. It will end its process after a few failed retries, pairing the bot with NSSM or similar can allow automated recovery if that occurs while you're away.
+- The code has SOME basic error handling in it, in particular for 503 errors it may encounter. It will end its process after a few failed retries, pairing the bot with [NSSM](https://nssm.cc/) in Windows or a systemd unit file in Linux can allow automated recovery if that occurs while you're away (Error Handling will get implemented as I encounter errors xD ).
 - This is a 'for-fun' project I began out of boredom and curiosity, I felt it was useful and simple enough to get setup that others may enjoy it too. I will likely make improvements and adjustments over time, but this is not a high priority project.
 
 ## License
