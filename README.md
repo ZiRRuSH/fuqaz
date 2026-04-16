@@ -163,7 +163,7 @@ Open the generated invite URL in your browser and add the bot to your server.
 
 ## Running the bot
 
-Once Ollama is running and your `.env` is configured:
+Once Ollama is running and your `.env` is configured, within the activated virtual environment:
 
 ```bash
 python bot.py
@@ -172,7 +172,18 @@ python bot.py
 If everything is set up correctly, the bot should log in and print its connected username in the console.
 - Users can interact with the bot within Discord by @ tagging it in chat, by DM, or with the slash commands /ask and /vision.
   - After tagging the bot in a chat channel, it will remain interactive with the user for 300 seconds (5 minutes) if no other users are chatting in the channel.
-  - If the user responds with a STOP_WORD it will end the persistent interaction, STOP_WORDS are located near the top of the bot.py file and can be customized.
+  - If the user responds with a `STOP_WORD` it will end the persistent interaction, STOP_WORDS are located near the top of the bot.py file and can be customized.
+
+NOTE: Before executing `python bot.py` you need to be in the virtual environment. Your terminal will show a `(.venv)` or similar prepending the usual `C:\` or `[user@hostname ~]$` in your terminal while in the virtual environment (if you don't see that, you're not in the venv). You'll have to activate the venv anytime you restart or close out the terminal, or `deactivate` the venv within the terminal. Listed below are the commands for activating the venv:
+
+  - Linux/Mac (from within the 'fuqaz' directory):
+  - ```
+    source .venv/bin/activate
+    ```
+  - Windows Powershell (from within the 'fuqaz' directory):
+    ```
+    .venv\Scripts\Activate.ps1
+    ```
 
   
 ### Getting the bot in your channels
