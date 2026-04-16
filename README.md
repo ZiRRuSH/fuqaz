@@ -158,8 +158,8 @@ Try to avoid over-permissioning the bot. You do **not** need Administrator for t
 
 ### 6. Invite the bot to your server
 
-Open the generated invite URL in your browser and add the bot to your server.  
-Discord’s bot authorization flow also supports `guild_id` and `disable_guild_select=true` in the invite URL if you want to preselect a specific server and stop the installer from choosing another one.
+Open the generated invite URL in your browser and add the bot to your server.
+
 
 ## Running the bot
 
