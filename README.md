@@ -84,7 +84,7 @@ Example:
 
 ```.env
 DISCORD_TOKEN=YOUR_BOT_TOKEN_GOES_HERE_KEEP_IT_PRIVATE
-GUILD_ID=YOUR_SERVER_TOKEN_GOES_HERE
+GUILD_ID=YOUR_SERVER_ID_GOES_HERE
 OLLAMA_URL=http://localhost:11434/api/generate
 OLLAMA_MODEL=ministral-3:8b
 SEARXNG_URL=http://127.0.0.1:8080/search
@@ -95,7 +95,7 @@ LOCAL_TIMEZONE=America/New_York
 ### Notes
 
 - `DISCORD_TOKEN` is required and acquired through the [Discord Developer Portal](https://discord.com/developers/applications) (instructions below).
-- `GUILD_ID` is your server's ID, you can see this by enabling developer mode in discord's settings then right clicking on your server icon in discord.
+- `GUILD_ID` is your server's ID, you can see this by enabling developer mode in discord's settings then right clicking on your server icon in Discord and 'Copy Server Info > Copy Server ID'.
 - `OLLAMA_URL` defaults to `http://localhost:11434/api/generate` in the current code.
 - `OLLAMA_MODEL` is the model the bot will run and should match a model you already have pulled in Ollama. 'ollama list' lists pulled models and names you currently have available.
 - `SEARXNG_URL` can stay in the file even if you are not using search yet. It does not hurt anything by being present but provides a search tool to the bot if you decide to install SearXNG.
