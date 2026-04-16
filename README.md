@@ -39,11 +39,17 @@ This was/is just a personal experimental project I did out of boredum, but found
 2. Create and activate a virtual environment.
 3. Install dependencies.
 
-### Windows PowerShell
-
+### Clone the Repo (or downlaod the zip/release and extract)
 ```
 git clone https://github.com/ZiRRuSH/fuqaz
+```
+```
 cd fuqaz
+```
+
+### Windows PowerShell
+
+```powershell
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
@@ -51,9 +57,7 @@ pip install -r requirements.txt
 
 ### Linux / macOS
 
-```
-git clone https://github.com/ZiRRuSH/fuqaz
-cd fuqaz
+```bash
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
