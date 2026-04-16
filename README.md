@@ -27,10 +27,10 @@ This was/is just a personal experimental project I did out of boredum, but found
 
 ## Requirements
 
-- Python 3.10+ recommended.
-- A local Ollama install with at least one working model.
-- A Discord bot token from the Discord Developer Portal.
-- Optional: a local SearXNG stack if you want to allow internet searches. (no direct scraping/fetches)
+- [Python](https://www.python.org/downloads/) 3.10+ recommended.
+- A local [Ollama](https://ollama.com/download) install with at least one working model.
+- A Discord bot token from the [Discord Developer Portal](https://discord.com/developers/applications). (instructions below)
+- Optional: a local [SearXNG](https://docs.searxng.org/) stack if you want to allow internet searches. (no direct scraping/fetches)
 
 
 ## Install
@@ -42,6 +42,8 @@ This was/is just a personal experimental project I did out of boredum, but found
 ### Windows PowerShell
 
 ```powershell
+git clone https://github.com/ZiRRuSH/fuqaz
+cd fuqaz
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
@@ -50,6 +52,8 @@ pip install -r requirements.txt
 ### Linux / macOS
 
 ```bash
+git clone https://github.com/ZiRRuSH/fuqaz
+cd fuqaz
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
