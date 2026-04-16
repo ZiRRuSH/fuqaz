@@ -131,7 +131,8 @@ This is the safest default for a self-hosted bot, because it prevents other peop
 
 ### 4. Enable Message Content Intent
 
-This project uses `intents.message_content = True`, so you need to enable **Message Content Intent** in the Developer Portal under **Bot** → **Privileged Gateway Intents**.  
+This project uses `intents.message_content = True`, so you need to enable **Message Content Intent** in the Developer Portal under **Bot** → **Privileged Gateway Intents**.
+
 The `discord.py` intents documentation notes that privileged intents must be enabled in the portal and also enabled in code.
 
 This matters because message content intent is used when a bot needs access to message content, attachments, embeds, components, or similar fields.
