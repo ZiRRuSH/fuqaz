@@ -41,7 +41,7 @@ This was/is just a personal experimental project I did out of boredum, but found
 
 ### Windows PowerShell
 
-```powershell
+```
 git clone https://github.com/ZiRRuSH/fuqaz
 cd fuqaz
 python -m venv .venv
@@ -51,7 +51,7 @@ pip install -r requirements.txt
 
 ### Linux / macOS
 
-```bash
+```
 git clone https://github.com/ZiRRuSH/fuqaz
 cd fuqaz
 python -m venv .venv
