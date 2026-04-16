@@ -105,7 +105,7 @@ LOCAL_TIMEZONE=America/New_York
 - `GUILD_ID` is your server's ID, you can see this by enabling developer mode in discord's settings then right clicking on your server icon in Discord and 'Copy Server Info > Copy Server ID'.
 - `OLLAMA_URL` defaults to `http://localhost:11434/api/generate` in the current code.
 - `OLLAMA_MODEL` is the model the bot will run and should match a model you already have pulled in Ollama. 'ollama list' lists pulled models and names you currently have available.
-- `SEARXNG_URL` can stay in the file even if you are not using search yet. It does not hurt anything by being present, but provides a search tool to the bot if you decide to install SearXNG.
+- `SEARXNG_URL` can stay in the file even if you are not using search yet. It does not hurt anything by being present, but provides a search tool to the bot if you decide to install [SearXNG](https://docs.searxng.org/).
 - `LOCAL_TIMEZONE` IANA timezone name used for date/time grounding in prompts, for example `America/New_York`.
 
 ## Discord bot setup
