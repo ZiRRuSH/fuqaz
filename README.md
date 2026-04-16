@@ -29,8 +29,8 @@ This was/is just a personal experimental project I did out of boredum, but found
 
 - [Python](https://www.python.org/downloads/) 3.10+ recommended.
 - A local [Ollama](https://ollama.com/download) install with at least one working model.
-- A Discord bot token from the [Discord Developer Portal](https://discord.com/developers/applications). (instructions below)
-- Optional: a local [SearXNG](https://docs.searxng.org/) stack if you want to allow internet searches. (no direct scraping/fetches)
+- A Discord bot token from the [Discord Developer Portal](https://discord.com/developers/applications).
+- Optional: a local [SearXNG](https://docs.searxng.org/) stack if you want to allow internet searches.
 
 
 ## Install
@@ -94,7 +94,7 @@ LOCAL_TIMEZONE=America/New_York
 
 ### Notes
 
-- `DISCORD_TOKEN` is required and acquired through the Discord developer portal (instructions below)
+- `DISCORD_TOKEN` is required and acquired through the [Discord Developer Portal](https://discord.com/developers/applications) (instructions below).
 - `GUILD_ID` is your server's ID, you can see this by enabling developer mode in discord's settings then right clicking on your server icon in discord.
 - `OLLAMA_URL` defaults to `http://localhost:11434/api/generate` in the current code.
 - `OLLAMA_MODEL` is the model the bot will run and should match a model you already have pulled in Ollama. 'ollama list' lists pulled models and names you currently have available.
