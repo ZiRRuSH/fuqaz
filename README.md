@@ -43,16 +43,9 @@ This was/is just a personal experimental project I did out of boredum, but found
 ```
 git clone https://github.com/ZiRRuSH/fuqaz
 ```
+### ... and enter the Fuqaz directory
 ```
 cd fuqaz
-```
-
-### Windows PowerShell
-
-```powershell
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
 ```
 
 ### Linux / macOS
@@ -63,9 +56,17 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+### Windows PowerShell
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
+
 ## Configure Ollama
 
-Make sure Ollama is installed and running locally. The current bot expects Ollama to be available at `http://localhost:11434/api/generate`, which is the normal/default endpoint.
+Make sure [Ollama](https://ollama.com/download) is installed and running locally. The current bot expects Ollama to be available at `http://localhost:11434/api/generate`, which is the normal/default endpoint.
 
 Pull a model you want to use, by default the bot is configured for Ministral-3:8b:
 
