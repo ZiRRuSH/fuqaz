@@ -225,10 +225,12 @@ It also builds the full prompts used for text and vision replies by combining:
 
 ## Vision support
 
-The bot supports image questions if your Ollama model supports images. In normal chat flow, it can:
+The bot supports image questions when you use an Ollama model with vision support.
 
-- read directly attached images,
-- or read images from a referenced/replied-to message.
+In normal chat flow, it can:
+- Read directly attached images.
+- Read images from a referenced or replied-to message.
+- Attempt to interpret gifs/memes inserted through Discord; this is highly model and prompt dependent, and guided by the prompts in `memory.py` rather than hard-coded rules for multimodal behavior. It may not always correlate an inserted image or meme with the context of the current chat taking place.
 
 If no text is included with an image, the bot falls back to a default prompt like “What’s in this image?” before sending the request.
 
