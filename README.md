@@ -1,4 +1,4 @@
-![Fuqaz banner](banner.png)
+![Fuqaz banner](images/banner.png)
 
 # Fuqaz
 
