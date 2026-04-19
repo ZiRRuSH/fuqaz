@@ -4,5 +4,8 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+<<<<<<< HEAD
 fuqaz_memory.db
 backup
+=======
+>>>>>>> 5e21f6f0b99df5156e46fff29d6ac2c93b8a413f
