@@ -4,5 +4,4 @@ __pycache__/
 *.pyc
 .venv/
 venv/
-fuqaz_memory.db
 backup
