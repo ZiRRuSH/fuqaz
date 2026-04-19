@@ -8,7 +8,7 @@ The goal of this bot is to stay fast, practical, and easy to tweak. It runs loca
 
 This started as a personal experiment I built out of boredom, but it turned out useful and simple enough that I decided to share it. Two birds with one stone: an entertaining Discord bot that also gives you remote access to your local LLMs through Discord.
 
-## Features
+## Features (*not all are polished, but functional.)
 
 - Local Discord bot using `discord.py`
 - Uses a locally hosted Ollama model.
