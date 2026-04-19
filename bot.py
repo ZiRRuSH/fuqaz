@@ -20,11 +20,21 @@ GUILD_ID = os.getenv("GUILD_ID")
 intents = discord.Intents.default()
 intents.message_content = True
 
-# Timeout value for the bot to remain active with a user after being tagged in chat
+# ANSI colors for a normal dark terminal
+RESET = "\033[0m"
+GREEN = "\033[92m"
+CYAN = "\033[96m"
+YELLOW = "\033[93m"
+RED = "\033[91m"
+
+def color(text: str, code: str) -> str:
+    return f"{code}{text}{RESET}"
+
+# Timeout value for the bot to remain interactive after being tagged in chat
 CONVO_TIMEOUT_SECONDS = 300  # 5 minutes
 # Commands to force the bot to return to an 'inactive' state after being tagged
 STOP_WORDS = {
-    "bye", "goodbye", "shut up", "stop", "stfu", "leave", "go away", "be quiet", "nvm", "never mind"
+    "shut up", "stop", "stfu", "be quiet", "hush"
 }
 
 # (channel_id, user_id) -> last_active_timestamp
@@ -81,6 +91,36 @@ def is_conversation_active(channel_id: str, user_id: str) -> bool:
     return True
 
 
+def build_source_meta_for_message(message: discord.Message) -> dict:
+    is_dm = isinstance(message.channel, discord.DMChannel)
+
+    if is_dm:
+        location = "DM"
+    else:
+        channel_name = getattr(message.channel, "name", None)
+        location = f"#{channel_name}" if channel_name else f"channel:{message.channel.id}"
+
+    return {
+        "user": message.author.display_name,
+        "location": location,
+    }
+
+
+def build_source_meta_for_interaction(interaction: discord.Interaction) -> dict:
+    is_dm = interaction.guild is None
+
+    if is_dm:
+        location = "DM"
+    else:
+        channel_name = getattr(interaction.channel, "name", None)
+        location = f"#{channel_name}" if channel_name else f"channel:{interaction.channel_id}"
+
+    return {
+        "user": interaction.user.display_name,
+        "location": location,
+    }
+
+
 async def collect_image_bytes_from_message(message: discord.Message) -> list[bytes]:
     image_bytes = []
 
@@ -123,6 +163,7 @@ def sanitize_discord_content(content: str) -> str:
 
     return content
 
+
 async def safe_send(channel, content: str, retries: int = 3, base_delay: float = 2.0):
     content = sanitize_discord_content(content)
     last_error = None
@@ -135,13 +176,16 @@ async def safe_send(channel, content: str, retries: int = 3, base_delay: float =
 
             if is_discord_503(e):
                 delay = base_delay * (attempt + 1)
-                print(f"[Fuqaz] Discord 503 while sending message. Retry {attempt + 1}/{retries} in {delay:.1f}s")
+                print(
+                    f"{color('[Fuqaz]', YELLOW)} Discord 503 while sending message. "
+                    f"Retry {attempt + 1}/{retries} in {delay:.1f}s"
+                )
                 await asyncio.sleep(delay)
                 continue
 
             raise
 
-    print(f"[Fuqaz] Repeated Discord 503 on send. Exiting for external restart. Last error: {last_error}")
+    print(f"{color('[Fuqaz]', RED)} Repeated Discord 503 on send. Exiting for external restart. Last error: {last_error}")
     os._exit(1)
 
 
@@ -157,13 +201,16 @@ async def safe_followup_send(interaction: discord.Interaction, content: str, ret
 
             if is_discord_503(e):
                 delay = base_delay * (attempt + 1)
-                print(f"[Fuqaz] Discord 503 while sending followup. Retry {attempt + 1}/{retries} in {delay:.1f}s")
+                print(
+                    f"{color('[Fuqaz]', YELLOW)} Discord 503 while sending followup. "
+                    f"Retry {attempt + 1}/{retries} in {delay:.1f}s"
+                )
                 await asyncio.sleep(delay)
                 continue
 
             raise
 
-    print(f"[Fuqaz] Repeated Discord 503 on followup send. Exiting for external restart. Last error: {last_error}")
+    print(f"{color('[Fuqaz]', RED)} Repeated Discord 503 on followup send. Exiting for external restart. Last error: {last_error}")
     os._exit(1)
 
 
@@ -171,14 +218,14 @@ async def safe_send_error(channel, text: str):
     try:
         await safe_send(channel, text)
     except Exception as e:
-        print(f"[Fuqaz] Failed to send error message to Discord: {e}")
+        print(f"{color('[Fuqaz]', RED)} Failed to send error message to Discord: {e}")
 
 
 async def safe_followup_error(interaction: discord.Interaction, text: str):
     try:
         await safe_followup_send(interaction, text)
     except Exception as e:
-        print(f"[Fuqaz] Failed to send followup error message to Discord: {e}")
+        print(f"{color('[Fuqaz]', RED)} Failed to send followup error message to Discord: {e}")
 
 
 async def generate_reply_for_message(message: discord.Message, cleaned_text: str) -> str:
@@ -202,12 +249,13 @@ async def generate_reply_for_message(message: discord.Message, cleaned_text: str
             str(message.channel.id),
             cleaned_text
         )
-        return ask_local_model(prompt)
+        source_meta = build_source_meta_for_message(message)
+        return ask_local_model(prompt, source_meta=source_meta)
 
 
 @bot.event
 async def on_ready():
-    print(f"Logged in as {bot.user}")
+    print(f"{color('[Fuqaz]', GREEN)} Logged in as {color(str(bot.user), CYAN)}")
 
 
 @bot.event
@@ -308,10 +356,12 @@ async def ask(interaction: discord.Interaction, prompt: str):
     )
 
     full_prompt = build_prompt(user_id, channel_id, prompt)
+    source_meta = build_source_meta_for_interaction(interaction)
+
     await interaction.response.defer(thinking=True)
 
     try:
-        reply = ask_local_model(full_prompt)
+        reply = ask_local_model(full_prompt, source_meta=source_meta)
     except Exception as e:
         await safe_followup_error(interaction, f"Local model error: {e}")
         return

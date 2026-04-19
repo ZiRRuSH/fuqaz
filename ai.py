@@ -7,13 +7,34 @@ load_dotenv(override=True)
 
 OLLAMA_CHAT_URL = os.getenv("OLLAMA_CHAT_URL", "http://localhost:11434/api/chat")
 OLLAMA_GENERATE_URL = os.getenv("OLLAMA_GENERATE_URL", "http://localhost:11434/api/generate")
+# Change 'ministral-3:8b' to match the model you're using, shown by: ollama list
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "ministral-3:8b")
 SEARXNG_URL = os.getenv("SEARXNG_URL", "http://127.0.0.1:8080/search")
 
-print(f"Using Ollama model: {OLLAMA_MODEL}")
-print(f"Using SearXNG endpoint: {SEARXNG_URL}")
+# ANSI colors for a normal dark terminal
+RESET = "\033[0m"
+BOLD = "\033[1m"
+DIM = "\033[2m"
+BLUE = "\033[94m"
+CYAN = "\033[96m"
+MAGENTA = "\033[95m"
+GREEN = "\033[92m"
+YELLOW = "\033[93m"
+RED = "\033[91m"
 
-# Conservative sampling settings for ministral-3, adjust if needed
+def color(text: str, code: str) -> str:
+    return f"{code}{text}{RESET}"
+
+print(
+    f"{color('[Fuqaz]', GREEN)} Using {color('Ollama', CYAN)} model "
+    f"{color(OLLAMA_MODEL, MAGENTA)}"
+)
+print(
+    f"{color('[Fuqaz]', GREEN)} Using {color('SearXNG', BLUE)} endpoint "
+    f"{color(SEARXNG_URL, DIM)}"
+)
+
+# Conservative chat settings for ministral-3, experiment/tweak as you please
 TEXT_SETTINGS = {
     "temperature": 0.7,
     "top_p": 0.95,
@@ -40,10 +61,20 @@ def raise_for_status_with_body(response: requests.Response, context: str):
         )
 
 
-def search_searxng(query: str) -> str:
+def search_searxng(query: str, source_meta: dict | None = None) -> str:
     query = (query or "").strip()
     if not query:
         return "Search error: empty query."
+
+    source_meta = source_meta or {}
+    user_label = source_meta.get("user", "unknown-user")
+    location_label = source_meta.get("location", "unknown-location")
+
+    print(
+        f"{color('[SearXNG]', BLUE)} "
+        f"{color(user_label, CYAN)} in {color(location_label, YELLOW)} "
+        f"{color('->', DIM)} {query}"
+    )
 
     r = requests.get(
         SEARXNG_URL,
@@ -98,7 +129,7 @@ def _extract_text_from_chat_response(data: dict) -> str:
     return f"No response came back from the local model. Raw keys: {list(data.keys())}"
 
 
-def ask_local_model(prompt: str) -> str:
+def ask_local_model(prompt: str, source_meta: dict | None = None) -> str:
     tools = [
         {
             "type": "function",
@@ -169,7 +200,7 @@ def ask_local_model(prompt: str) -> str:
         else:
             seen_queries.add(query.lower())
             try:
-                tool_result = search_searxng(query)
+                tool_result = search_searxng(query, source_meta=source_meta)
             except Exception as e:
                 tool_result = f"Search error for query '{query}': {e}"
 
