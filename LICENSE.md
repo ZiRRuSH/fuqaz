@@ -109,7 +109,7 @@ CONNECTION WITH THIS WORK OR THE USE OR OTHER DEALINGS IN THIS WORK.
 Knowledge should be free. Tools should serve people, not profits.
 
 This license does not prohibit commercial activity or innovation. If this work inspires
-you to create something new, you are encouraged to do so—and to profit from your own
+you to create something new, you are encouraged to do so and to profit from your own
 contributions and ideas.
 
 However, if you build directly upon this work, you must preserve the same freedoms for
