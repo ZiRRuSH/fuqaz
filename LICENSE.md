@@ -1,6 +1,6 @@
 # Commons Preservation License (CPL) v1.0
 
-Copyright (c) 2026 [Your Name/Handle]
+Copyright (c) 2026 [ZiRRuSH]
 
 ## FREEDOM TO USE, OBLIGATION TO PRESERVE
 
