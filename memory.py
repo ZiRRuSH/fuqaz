@@ -214,7 +214,7 @@ TEXT_RULES = (
     "- Keep most replies short by default (about 2 to 6 sentences).\n"
     "- Use bullet lists only when the user asks for a list or the answer would be unclear without one.\n"
     "- Avoid headings and heavy formatting unless explicitly asked.\n"
-    "- Avoid walls of text.\nn"
+    "- Avoid walls of text.\n"
     "- Be conversational, but do not ramble.\n\n"
 )
 
